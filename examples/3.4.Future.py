@@ -38,7 +38,7 @@ async def async_operation():
         print("Асинхронная операция была отменена в процессе выполнения.")
         raise
 
-async def main():
+async def main2():
     print("Главная корутина запущена.")
     task = asyncio.create_task(async_operation())
     await asyncio.sleep(0.1)
@@ -87,7 +87,7 @@ async def fourth_function(x: int):
     print(f"Четвертая функция завершилась с результатом {result}")
     return result
 
-async def main():
+async def main3():
     print("Начало цепочки асинхронных вызовов")
     task_1 = asyncio.create_task(first_function(1))
     await task_1
@@ -113,11 +113,11 @@ async def setter(future:asyncio.Future):
     await asyncio.sleep(ra)
     future.set_result(True)
 
-async def main():
+async def main4():
     future = asyncio.Future()
     task_1 = asyncio.create_task(waiter(future)) 
     task_2 = asyncio.create_task(setter(future)) 
     await asyncio.gather(task_1, task_2)
 
 
-asyncio.run(main())
+asyncio.run(main4())
